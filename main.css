@@ -6,11 +6,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
-    font-family: "Dosis","Helvetica Neue", sans-serif;
+    font-family: 'Dosis', 'Helvetica Neue', sans-serif;
     font-weight: normal;
-    color: #FaFaFf;
-    font-size: 14px;
+    color: #fafafa;
+    font-size: 12px;
+    position: relative;
+    min-height: 100%;
+    background-color: rgba(15, 45, 65, 1);
+    overflow: hidden;
 }
 
 a {
@@ -25,23 +30,7 @@ a:hover {
 html {
     height: 100%;
 }
-body {
-    position: relative;
-    min-height: 100%;
-    background-color: rgba(15,45,65,1);
-    overflow: hidden;
-}
-body:after {
-    position: absolute;
-    content: '';
-    top: 1rem;
-    left: 1rem;
-    background: url(flare.svg) top left no-repeat;
-    background-size: contain;
-    width: 10rem;
-    height: 10rem;
-    z-index: 100;
-}
+
 .square {
     transition: all 0.3s ease-in-out;
     position: absolute;
@@ -49,64 +38,71 @@ body:after {
 }
 
 .level1 {
-    background-color: rgba(25,55,75,1);
+    background-color: rgba(25, 55, 75, 1);
 }
+
 .level2 {
-    background-color: rgba(35,65,85,1);
+    background-color: rgba(35, 65, 85, 1);
 }
+
 .level3 {
-    background-color: rgba(45,75,95,1);
+    background-color: rgba(45, 75, 95, 1);
 }
+
 .level4 {
-    background-color: rgba(55,85,105,1);
+    background-color: rgba(55, 85, 105, 1);
 }
+
 .level5 {
-    background-color: rgba(65,95,115,1);
+    background-color: rgba(65, 95, 115, 1);
 }
+
 .level6 {
-    background-color: rgba(75,105,125,1);
+    background-color: rgba(75, 105, 125, 1);
 }
+
 .level7 {
-    background-color: rgba(85,115,135,1);
     background: #0e9;
 }
+
 .level5 + .level6 {
-    background-color: rgba(55,85,105,1);
-    border-bottom-left-radius: 50%;
     border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background-color: rgba(55, 85, 105, 1);
 }
+
 .level5 + .level2 {
     border-bottom-left-radius: 50%;
 }
+
 .level3 + .level2 {
     border-bottom-left-radius: 50%;
 }
+
 .level6 + .level5 {
     border-top-left-radius: 50%;
-}
-.level5 + .level6 {
-    border-bottom-left-radius: 50%;
-    background-color: rgba(55,85,105,1);
 }
 
 .level6 + .level7 {
     border-top-right-radius: 50%;
-
 }
+
 .level3 + .level6 {
     border-bottom-right-radius: 50%;
-
 }
+
 .level5 + .level5 {
     border-bottom-right-radius: 50%;
 }
 
-.level4 + .level1,.level5 + .level1,.level6 + .level1 {
+.level4 + .level1,
+.level5 + .level1,
+.level6 + .level1 {
     border-top-right-radius: 50%;
 }
 
 .square:hover {
-    opacity: 0.1
+    opacity: 0.1;
 }
 
 #hello {
@@ -118,21 +114,24 @@ body:after {
     text-align: right;
     font-size: 2em;
 }
+
 hr {
     margin: 0.5em 0;
     animation: fadeIn 1s 600ms forwards;
     opacity: 0;
 }
-p:first-child {
-    opacity: 0;
-    animation: fadeIn 1s 600ms forwards;
-}
+
 p {
     opacity: 0;
     animation: fadeIn 2s 2600ms forwards;
 }
 
-p span  {
+p:first-child {
+    opacity: 0;
+    animation: fadeIn 1s 600ms forwards;
+}
+
+p span {
     display: inline-block;
 }
 
@@ -140,6 +139,7 @@ p span  {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
