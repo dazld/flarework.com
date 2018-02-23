@@ -1,3 +1,3 @@
 sync:
-	rsync -avl --delete --stats --progress . flarework.com:~/projects/flarework.com/
+	rsync -avl --delete --stats --progress --exclude-from=.rsyncignore . flarework.com:~/projects/flarework.com/
 
