@@ -32,9 +32,7 @@ html {
 }
 
 .square {
-    transition: all 0.3s ease-in-out;
     position: absolute;
-    background-color: red;
 }
 
 .level1 {

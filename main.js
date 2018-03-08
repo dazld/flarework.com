@@ -37,13 +37,13 @@ function randInt(max = 10) {
     return Math.round(Math.random() * max);
 }
 
-function makeSquare(x, y, size, depth = 1) {
+function makeSquare(x, y, localSize, depth = 1) {
     const ops = [];
     const recurse = doIt();
 
-    if (recurse && size > 10) {
+    if (recurse && localSize > 8) {
         const nextDepth = depth + 1;
-        const hs = (size / 2);
+        const hs = (localSize / 2);
 
         ops.push(makeSquare(x, y, hs, nextDepth));
         ops.push(makeSquare(x + hs, y, hs, nextDepth));
@@ -57,8 +57,8 @@ function makeSquare(x, y, size, depth = 1) {
         square.className = `square level${depth}`;
         square.style.top = `${x + halfSpace}px`;
         square.style.left = `${y + halfSpace}px`;
-        square.style.height = `${size - halfSpace}px`;
-        square.style.width = `${size - halfSpace}px`;
+        square.style.height = `${localSize - halfSpace}px`;
+        square.style.width = `${localSize - halfSpace}px`;
         ops.push(Promise.resolve()
                 .then(delay(timeToAnimate))
                 .then(function () {
@@ -83,11 +83,11 @@ function anim() {
 
     for (let x = 0; x <= hw.width; x += size) {
         for (let y = 0; y <= hw.height; y += size) {
-            ops.push(makeSquare(x, y, size, 1));
+            ops.push(makeSquare(y, x, size, 1));
         }
     }
     Promise.all(ops)
-            .then(delay(1000))
+            .then(delay(3000))
             .then(anim);
 }
 

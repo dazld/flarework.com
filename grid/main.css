@@ -1,0 +1,90 @@
+@import url(https://flarework.com/normalize.css);
+
+:root {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+    --gutter: 1rem;
+}
+
+html {
+    font-size: 10px;
+    height: 100%;
+}
+
+html::after {
+    content: '< 320';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+@media (min-width: 321px) {
+    html {
+        font-size: 12px;
+    }
+
+    html::after {
+        content: '> 320';
+    }
+}
+
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+h1,
+h2,
+p {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: var(--gutter);
+}
+
+.grid {
+    height: 100%;
+    margin: 0 auto;
+    display: grid;
+    background: black;
+    grid-gap: calc(var(--gutter) / 2);
+    grid-template-columns: 5rem 2fr 2fr;
+    grid-template-rows: auto 2fr 2fr auto;
+    grid-template-areas:
+        'header header header'
+        'sidebar body body'
+        'sidebar body body'
+        'footer footer footer';
+}
+
+.grid > * {
+    padding: var(--gutter);
+}
+
+header {
+    background: deepskyblue;
+    grid-area: header;
+}
+
+aside {
+    background: deeppink;
+    grid-area: sidebar;
+    margin-top: calc(var(--gutter) / 2 * -1);
+    margin-bottom: calc(var(--gutter) / 2 * -1);
+}
+
+aside span {
+    display: block;
+}
+
+article {
+    grid-area: body;
+    background: papayawhip;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    max-height: 100%;
+}
+
+footer {
+    background: greenyellow;
+    grid-area: footer;
+}
