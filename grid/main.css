@@ -47,22 +47,55 @@ p {
     display: grid;
     background: black;
     grid-gap: calc(var(--gutter) / 2);
-    grid-template-columns: 5rem 2fr 2fr;
-    grid-template-rows: auto 2fr 2fr auto;
+    grid-template-columns: 5rem 25% 25% 25% 25%;
+    grid-template-rows: auto 2fr 2fr 2fr 2fr auto;
     grid-template-areas:
-        'header header header'
-        'sidebar body body'
-        'sidebar body body'
-        'footer footer footer';
+        'header header header header header'
+        'sidebar body body body body'
+        'sidebar body body body body'
+        'sidebar body body body body'
+        'sidebar body body body body'
+        'footer footer footer footer footer';
 }
 
-.grid > * {
+.grid > *:not(figure) {
     padding: var(--gutter);
+}
+
+figure {
+    position: relative;
+    grid-column: 2 / 4;
+    grid-row: 3 / 6;
+    z-index: 3;
+    overflow: hidden;
+    margin: 0;
+}
+
+@keyframes zoom {
+    to {
+        transform: scale(1.1) translate3d(0, 10px, 10px);
+    }
+}
+
+figure img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    animation: 4s zoom ease-in-out alternate infinite;
 }
 
 header {
     background: deepskyblue;
     grid-area: header;
+}
+
+h1.mega {
+    grid-column: 3 / 5;
+    grid-row: 3 / 5;
+    z-index: 4;
+    text-align: right;
+    font-size: 8vw;
+    color: red;
 }
 
 aside {
