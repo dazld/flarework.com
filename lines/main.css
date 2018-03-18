@@ -16,11 +16,7 @@
 
 html {
     height: 100%;
-    background:
-        radial-gradient(
-            var(--blue),
-            var(--lines) 50%
-        );
+    background: black;
 }
 
 body {
@@ -36,6 +32,10 @@ body {
     perspective: 1000px;
     overflow: hidden;
     transform-style: preserve-3d;
+}
+
+canvas {
+    background: red;
 }
 
 @media (min-width: 321px) {
