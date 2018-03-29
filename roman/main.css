@@ -1,0 +1,89 @@
+@import url('/normalize.css');
+@i
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: rgba(38, 104, 228, 0.1);
+    --lines: rgba(32, 32, 32, 0.2);
+    --lines2: rgba(32, 32, 32, 0.1);
+    --gutter: 0.5rem;
+
+    font-size: 8px;
+}
+
+body {
+    height: 100%;
+  
+    display: flex;
+ 
+    color: #131313;
+}
+html, body {
+  height: 100%;
+}
+
+
+body {
+  background: #fafaff;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent, 
+    transparent 20px, 
+    black 20px,
+    black 40px,
+    transparent 40px,
+    transparent 60px,
+    red 60px,
+    red 80px
+  );
+  animation: cycle-bg 6s ease-in-out alternate infinite;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+
+h1 {
+  font-size: 14vmin;
+  padding: 1vw 3vw;
+  line-height: 0.8;
+  color: #fafaff;
+  font-weight: 100;
+  letter-spacing: -0.04em;
+  text-shadow: 0 0 1
+  border-bottom: 1px solid red, 1px solid black, 1px solid white;
+  margin-bottom: 3vw;
+  zmix-blend-mode: multiply;
+  animation: 6s cycle-color ease-in-out alternate infinite;
+  text-align: right;
+}
+h1 span {
+  margin-right: -0.14em;
+}
+
+@keyframes cycle-bg {
+  from {
+    background-color: #fafaff;
+  }
+  50% {
+    background-color: black;
+  }
+  to {
+    background-color: red;
+  }
+}
+
+@keyframes cycle-color {
+  from {
+    color: black;
+  }
+  50% {
+    color: red;
+  }
+  to {
+    color: #fafaff;
+  }
+}
