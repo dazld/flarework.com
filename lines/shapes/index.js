@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 'use strict';
 
 const triangle = [{
@@ -7,7 +8,7 @@ const triangle = [{
     x: -10,
     y: 10
 }, {
-    x: 30,
+    x: 20,
     y: -10
 }];
 
