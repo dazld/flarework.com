@@ -38,7 +38,7 @@ function animate() {
     context.fillStyle = 'rgba(255,255,255,0.25';
     context.clearRect(0, 0, window.innerWidth * devicePixelRatio, window.innerHeight * devicePixelRatio);
     birds.forEach(function (b) {
-        b.update();
+        b.update(context);
         b.draw(context);
     });
     requestAnimationFrame(animate);
