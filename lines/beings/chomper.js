@@ -34,7 +34,7 @@ class Chomper extends BaseBeing {
             return target;
         }, targets.pop());
 
-        this.direction = Math.atan2(...closestTarget.position.toArray()) - Math.atan2(...this.position.toArray());
+        // this.direction = Math.atan2(...closestTarget.position.toArray()) - Math.atan2(...this.position.toArray());
         this.position = this.position.mix(closestTarget.position, 0.2);
         if (closestDistance < 40) {
             this.targets.removeAtIdx(targetIdx);
