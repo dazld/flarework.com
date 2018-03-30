@@ -35,7 +35,7 @@ body {
 }
 
 canvas {
-    background: red;
+    background: #fafaff;
 }
 
 @media (min-width: 321px) {

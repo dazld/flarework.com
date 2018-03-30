@@ -1,14 +1,14 @@
 'use strict';
 
 const triangle = [{
-    x: 50,
-    y: 50
+    x: 10,
+    y: 10
 }, {
-    x: -50,
-    y: 50
+    x: -10,
+    y: 10
 }, {
-    x: 20,
-    y: -50
+    x: 30,
+    y: -10
 }];
 
 module.exports = {
