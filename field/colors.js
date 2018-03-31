@@ -30,9 +30,18 @@ function makeIterator(items) {
     };
 }
 
+const getColor = function () {
+    const len = colors.length;
+
+    return function (ratio) {
+        return colors[Math.floor(ratio * len)];
+    };
+}();
+
 const cols = makeIterator(colors);
 
 module.exports = {
     cols,
-    colors
+    colors,
+    getColor
 };

@@ -4,10 +4,12 @@
 
 const resize = require('canvas-fit');
 const Victor = require('victor');
+const {GUI} = require('dat-gui');
 const SimplexNoise = require('simplex-noise');
-const {cols} = require('./colors');
+const {cols, getColor} = require('./colors');
 
 const noise = new SimplexNoise();
+const gui = new GUI();
 
 // setup stage
 const canvas = document.querySelector('canvas');
@@ -22,6 +24,20 @@ const bounds = {
     y: window.innerHeight * devicePixelRatio
 };
 
+class Controls {
+    constructor() {
+        this.length = 30;
+        this.width = 1;
+        this.interval = 30000;
+    }
+}
+
+const c = new Controls();
+
+gui.add(c, 'length', 1, 100);
+gui.add(c, 'width', 1, 100);
+gui.add(c, 'interval', 1000, 30000);
+
 class Point {
     constructor({fill, debug, x, y}){
         this.fill = fill;
@@ -32,22 +48,22 @@ class Point {
     update(n) {
         const angle = n * (Math.PI * 2);
         this.direction = angle;
+        this.n = n;
     }
     draw({ctx, x, y}) {
+        const absn = Math.abs(this.n);
+
         ctx.save();
         ctx.translate(x, y);
         ctx.rotate(this.direction);
         ctx.translate(-25, -50);
         ctx.beginPath();
-        ctx.strokeStyle = this.fill;
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = getColor(absn);
+        ctx.lineWidth = c.width;
         ctx.moveTo(0, 0);
-        ctx.lineTo(0, 10);
+        ctx.lineTo(0, c.length);
         ctx.stroke();
         ctx.restore();
-        // if (this.debug) {
-        //     this.drawDebug(ctx);
-        // }
     }
 }
 
@@ -78,7 +94,7 @@ function animate(dt) {
 
     vecs.forEach(function (row, col) {
         row.forEach(function (el, row) {
-            el.update(noise.noise3D(row / 32, col / 32, dt / 10000));
+            el.update(noise.noise3D(row / 32, col / 32, dt / c.interval));
             el.draw({
                 ctx: context,
                 x: row * spacingX,
