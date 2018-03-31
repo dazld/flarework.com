@@ -29,6 +29,7 @@ class Controls {
         this.length = 30;
         this.width = 1;
         this.interval = 30000;
+        this.blankingOpacity = 0.2;
     }
 }
 
@@ -37,6 +38,7 @@ const c = new Controls();
 gui.add(c, 'length', 1, 100);
 gui.add(c, 'width', 1, 100);
 gui.add(c, 'interval', 1000, 30000);
+gui.add(c, 'blankingOpacity', 0, 0.25);
 
 class Point {
     constructor({fill, debug, x, y}){
@@ -86,8 +88,8 @@ const vecs = Array(square)
 
 // Main loop
 function animate(dt) {
-    context.fillStyle = 'rgba(255,255,255,0.25';
-    context.clearRect(0, 0, window.innerWidth * devicePixelRatio, window.innerHeight * devicePixelRatio);
+    context.fillStyle = `rgba(50,50,50,${c.blankingOpacity})`;
+    context.fillRect(0, 0, window.innerWidth * devicePixelRatio, window.innerHeight * devicePixelRatio);
 
     const spacingX = devicePixelRatio * window.innerWidth / square;
     const spacingY = devicePixelRatio * window.innerHeight / square;
