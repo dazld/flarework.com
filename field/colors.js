@@ -1,6 +1,6 @@
 'use strict';
 
-const colors = [
+let colors = [
     '#53c9e3',
     '#86d9eb',
     '#cbeff7',
@@ -38,10 +38,18 @@ const getColor = function () {
     };
 }();
 
+function loadRandom(){
+    fetch('https://sidesketch.com/api/palettes/random')
+        .then(res => res.json())
+        .then(data => colors = data.hex);
+
+}
+
 const cols = makeIterator(colors);
 
 module.exports = {
     cols,
     colors,
-    getColor
+    getColor,
+    loadRandom
 };

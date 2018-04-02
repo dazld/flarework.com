@@ -6,7 +6,7 @@ const resize = require('canvas-fit');
 const Victor = require('victor');
 const {GUI} = require('dat-gui');
 const SimplexNoise = require('simplex-noise');
-const {cols, getColor} = require('./colors');
+const {cols, getColor, loadRandom} = require('./colors');
 
 const noise = new SimplexNoise();
 const gui = new GUI();
@@ -17,6 +17,9 @@ const context = canvas.getContext('2d');
 const fit = resize(canvas, undefined, devicePixelRatio);
 
 window.addEventListener('resize', fit(canvas), false);
+
+
+
 
 // setup entities
 const bounds = {
@@ -30,6 +33,7 @@ class Controls {
         this.width = 1;
         this.interval = 30000;
         this.blankingOpacity = 0.2;
+        this.newPalette = loadRandom;
     }
 }
 
@@ -39,6 +43,7 @@ gui.add(c, 'length', 1, 100);
 gui.add(c, 'width', 1, 100);
 gui.add(c, 'interval', 1000, 30000);
 gui.add(c, 'blankingOpacity', 0, 0.25);
+gui.add(c, 'newPalette');
 
 class Point {
     constructor({fill, debug, x, y}){
