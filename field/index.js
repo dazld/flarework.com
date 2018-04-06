@@ -34,6 +34,9 @@ class Controls {
         this.interval = 30000;
         this.blankingOpacity = 0.2;
         this.newPalette = loadRandom;
+        this.piScale = 2;
+        this.offsetX = 0;
+        this.offsetY = 0;
     }
 }
 
@@ -42,7 +45,11 @@ const c = new Controls();
 gui.add(c, 'length', 1, 100);
 gui.add(c, 'width', 1, 100);
 gui.add(c, 'interval', 1000, 30000);
-gui.add(c, 'blankingOpacity', 0, 0.25);
+gui.add(c, 'blankingOpacity', 0, 0.5);
+gui.add(c, 'piScale', 0.1, 12);
+gui.add(c, 'offsetX', -50, 50);
+gui.add(c, 'offsetY', -50, 50);
+
 gui.add(c, 'newPalette');
 
 class Point {
@@ -53,7 +60,8 @@ class Point {
         this.direction = 0;
     }
     update(n) {
-        const angle = n * (Math.PI * 2);
+        const angle = n * (Math.PI * c.piScale);
+
         this.direction = angle;
         this.n = n;
     }
@@ -63,7 +71,7 @@ class Point {
         ctx.save();
         ctx.translate(x, y);
         ctx.rotate(this.direction);
-        ctx.translate(-25, -50);
+        ctx.translate(c.offsetX, c.offsetY);
         ctx.beginPath();
         ctx.strokeStyle = getColor(absn);
         ctx.lineWidth = c.width;
