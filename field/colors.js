@@ -30,13 +30,11 @@ function makeIterator(items) {
     };
 }
 
-const getColor = function () {
+const getColor = function (ratio) {
     const len = colors.length;
 
-    return function (ratio) {
-        return colors[Math.floor(ratio * len)];
-    };
-}();
+    return colors[Math.floor(ratio * len)];
+};
 
 function loadRandom(){
     fetch('https://sidesketch.com/api/palettes/random')
