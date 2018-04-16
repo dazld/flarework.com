@@ -1,0 +1,68 @@
+@import url('https://flarework.com/normalize.css');
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: radial-gradient(rgba(255,255,255,1), rgba(32,32,32,0.3));
+    perspective: 1800px;
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    animation: aargh 5s ease-in-out alternate infinite;
+}
+
+#base {
+    width: 66vw;
+    height: 66vw;
+    background: rgba(32, 94, 192, 0.1);
+    transform: rotateX(0deg) rotateZ(0deg);
+    position: relative;
+    transform-style: preserve-3d;
+    animation: spin 12s ease-in-out infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotateX(0deg) rotateZ(0deg);
+    }
+
+    50% {
+        transform: rotateX(70deg)  rotateZ(180deg);
+    }
+
+    to {
+        transform: rotateX(0deg) rotateZ(360deg);
+    }
+}
+
+@keyframes aargh {
+    from {
+        perspective: 800px;
+    }
+    50% {
+        perspective: 500px;
+    }
+    to {
+        perspective: 800px;
+    }
+}
+
+.square {
+    position: absolute;
+    background: rgba(32,94,192,1);
+    opacity: 0.5;
+    transform: translateZ(0);
+    transition: all 1s ease-in-out;
+}
+
+
+
