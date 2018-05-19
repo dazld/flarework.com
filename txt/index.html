@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="foo"></div>
+    <script type="text/javascript">
+      const content = [1,2,3,4,5,6,7,8,9,0];
+
+      function randDec(){
+        return content[Math.floor(Math.random() * content.length)];
+      }
+
+      function getSpan(){
+        const s = document.createElement('span');
+        s.textContent = randDec()
+        return s;
+      }
+
+      const el = document.querySelector('.foo');
+
+      const n = 5700;
+      const a = Array(n).fill('').map(getSpan);
+
+      a.forEach(el.appendChild.bind(el))
+
+      function anim(d){
+        requestAnimationFrame(anim);
+        a.forEach(n => n.textContent = randDec())
+      }
+
+      // anim(0)
+    </script>
+  </body>
+</html>
