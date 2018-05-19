@@ -7,7 +7,7 @@
     <title></title>
   </head>
   <body>
-    <div class="foo"></div>
+    <canvas></canvas>
     <script type="text/javascript">
       const content = [1,2,3,4,5,6,7,8,9,0];
 
@@ -15,25 +15,36 @@
         return content[Math.floor(Math.random() * content.length)];
       }
 
-      function getSpan(){
-        const s = document.createElement('span');
-        s.textContent = randDec()
-        return s;
+      const canvas = document.querySelector('canvas');
+      const ctx = canvas.getContext('2d');
+      const cols = 100;
+      const width = window.innerWidth / cols;
+      const rows = Math.floor(window.innerHeight / width);
+
+      canvas.width = window.innerWidth * window.devicePixelRatio;
+      canvas.height = window.innerHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      ctx.fillStyle = 'white';
+      ctx.font = '1.2vw fira code';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      function animC(d) {
+        requestAnimationFrame(animC)
+
+        ctx.clearRect(0,0,window.innerWidth, window.innerHeight);
+
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            ctx.fillText(randDec(), col * width + width/2, row * width + width/2, width);
+          }
+        }
+
       }
 
-      const el = document.querySelector('.foo');
+      animC()
 
-      const n = 5700;
-      const a = Array(n).fill('').map(getSpan);
 
-      a.forEach(el.appendChild.bind(el))
-
-      function anim(d){
-        requestAnimationFrame(anim);
-        a.forEach(n => n.textContent = randDec())
-      }
-
-      // anim(0)
     </script>
   </body>
 </html>

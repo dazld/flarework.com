@@ -1,7 +1,17 @@
 @import url(https://flarework.com/normalize.css);
 
 html {
+  min-height: 100%;
   height: 100%;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
 body {
@@ -9,18 +19,4 @@ body {
   height: 100%;
   color: white;
   overflow: hidden;
-}
-
-.foo {}
-
-.foo span {
-    font-size: 2vw;
-    text-align: center;
-    vertical-align: middle;
-    font-family: monospace;
-    height: 2vw;
-    width: 2vw;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
 }
